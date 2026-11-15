@@ -656,6 +656,26 @@ body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
 .stats b{font-size:clamp(36px,3vw,54px)}
 }
 @media (min-width:1280px){.stats .w{grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.25fr) 1fr}.stats .w>div:not(.best)>span{white-space:nowrap;letter-spacing:-.3px}}
+
+/* mobile header: menu left, icons right (kakao·insta·blog), trial below */
+@media (max-width:767px){
+header .w{height:auto;padding-top:10px;padding-bottom:10px;gap:10px}
+header .w>.mbtn{order:-1;width:40px;height:40px}
+header .logo{min-width:0}
+header .hact{display:grid;grid-template-columns:repeat(3,36px);gap:6px;margin-left:auto;justify-items:center}
+header .hact .nblog{width:36px;height:36px;border-radius:8px}
+header .hact .nblog svg{width:22px;height:22px}
+header .hact .nblog.kkh{display:flex}
+header .hact .hapl{grid-column:1/-1;width:100%;min-height:32px;padding:0 6px;font-size:13px;justify-content:center;gap:5px}
+header .hact .hapl svg{width:15px;height:15px}
+html{scroll-padding-top:104px}
+}
+@media (max-width:380px){
+header .w{gap:8px}
+header .hact{grid-template-columns:repeat(3,34px);gap:5px}
+header .hact .nblog{width:34px;height:34px}
+header .hact .nblog svg{width:20px;height:20px}
+}
 </style>
 <script>
 /* 새로고침하면 항상 맨 위에서 시작 */
