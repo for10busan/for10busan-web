@@ -960,7 +960,7 @@ start();
 </script>
 <script>
 /* ===== 카카오톡 채널 주소: 만들고 나면 여기에만 넣으면 됩니다 (예: 'https://pf.kakao.com/_xxxxx') ===== */
-var KAKAO_CHANNEL='';
+var KAKAO_CHANNEL='https://open.kakao.com/o/sxojreXi';
 (function(){
 var toastEl=document.getElementById('toast'),tt=0;
 function toast(msg){toastEl.innerHTML=msg;toastEl.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on');},3800);}
@@ -969,7 +969,7 @@ window.FOR10_toast=toast;
 /* kakao links */
 var kk=KAKAO_CHANNEL.replace(/\/+$/,'');
 document.querySelectorAll('[data-kakao]').forEach(function(a){
-  if(kk){a.href=kk+'/chat';a.target='_blank';a.rel='noopener';}
+  if(kk){a.href=/open\.kakao\.com/.test(kk)?kk:kk+'/chat';a.target='_blank';a.rel='noopener';}
   else a.addEventListener('click',function(e){if(a.hasAttribute('data-apply'))return;e.preventDefault();toast('카카오톡 채널을 준비하고 있어요.<br>지금은 인스타 DM이나 전화로 문의해 주세요.');});
 });
 
