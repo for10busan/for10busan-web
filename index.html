@@ -759,7 +759,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)top();});
 <div class="sk rv"><span class="n">01</span><h3>전문 강사진</h3><p>10년 이상의 경력을 가진 체대입시 전문 강사진들이 종목별로 직접 트레이닝합니다.</p></div>
 <div class="sk rv clk" role="button" tabindex="0" data-gal="rec" aria-haspopup="dialog" aria-label="기록 및 데이터 관리 - FOR10 앱 화면 보기"><span class="n">02</span><h3>기록 및 데이터 관리</h3><p>정기적인 측정을 통해 기록 변화를 숫자로 확인하고 훈련 계획에 반영합니다.</p><span class="skm">앱 화면 보기 +</span></div>
 <div class="sk rv clk" role="button" tabindex="0" data-gal="uni" aria-haspopup="dialog" aria-label="대학별 맞춤 전략 - FOR10 앱 화면 보기"><span class="n">03</span><h3>대학별 맞춤 전략</h3><p>성적과 실기 기록을 환산해 목표 대학과 지원 전략을 함께 설정합니다.</p><span class="skm">앱 화면 보기 +</span></div>
-<div class="sk rv"><span class="n">04</span><h3>컨디션·멘탈 관리</h3><p>실기 고사 당일까지 부상 관리와 멘탈 코칭을 이어갑니다.</p></div>
+<div class="sk rv clk" role="button" tabindex="0" data-gal="care" aria-haspopup="dialog" aria-label="컨디션·멘탈 관리 - 자세히 보기"><span class="n">04</span><h3>컨디션·멘탈 관리</h3><p>실기 고사 당일까지 부상 관리와 멘탈 코칭을 이어갑니다.</p><span class="skm">자세히 보기 +</span></div>
 </div>
 </div>
 </section>
@@ -1125,6 +1125,7 @@ build(D.sets[0]);
 <script>
 (function(){
 var G={rec:[['img/app-4.jpg','FOR10 앱 실기 기록 화면 - 직접 측정한 기록 입력과 기록 추이 그래프'],['img/app-5.jpg','FOR10 앱 성장 그래프 화면 - 월별 테스트 기록 변화'],['img/app-6.jpg','FOR10 앱 월별 테스트 화면 - 종목별 점수와 남녀 같은 기준 종합 순위']],
+care:[['img/app-7.jpg','포텐체대입시 부상 관리 - 훈련 전 웜업, 훈련 후 회복, 통증 체크, 강도 조절'],['img/app-8.jpg','포텐체대입시 멘탈 코칭 - 1:1 상담, 정체기 코칭, 동기 부여, 긴장 관리'],['img/app-9.jpg','체대입시 실기 당일 체크리스트 - 수험표, 운동복, 보호대, 간식, 수면과 웜업']],
 uni:[['img/app-1.jpg','FOR10 앱 입시 컨설팅 화면 - 대학별 수능 환산 점수와 환산 총점'],['img/app-2.jpg','FOR10 앱 실기 점수 계산 화면 - 기록 입력 시 배점 자동 계산'],['img/app-3.jpg','FOR10 앱 모의고사 등급컷 화면 - 원점수로 표준점수·백분위·등급 확인']]};
 var g=document.getElementById('gal'),tr=g.querySelector('.gtrack'),n=0,dots=g.querySelector('.gdots'),i=0,tm=null,last=null,sx=null;
 function load(key){var L=G[key]||G.rec;n=L.length;tr.innerHTML='';dots.innerHTML='';tr.style.transition='none';L.forEach(function(x,k){var im=document.createElement('img');im.src=x[0];im.alt=x[1];tr.appendChild(im);var d=document.createElement('button');d.type='button';d.setAttribute('aria-label',(k+1)+'번째 화면');d.onclick=function(){go(k);auto();};dots.appendChild(d);});tr.offsetWidth;tr.style.transition='';}
