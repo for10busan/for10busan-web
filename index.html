@@ -676,6 +676,20 @@ header .hact{grid-template-columns:repeat(3,34px);gap:5px}
 header .hact .nblog{width:34px;height:34px}
 header .hact .nblog svg{width:20px;height:20px}
 }
+.sk.clk{cursor:pointer}.sk .skm{margin-top:14px;font-size:13px;font-weight:700;color:#fc011c}
+#gal[hidden]{display:none}#gal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center}
+#gal .gbg{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(4px)}
+#gal .gbox{position:relative;width:min(92vw,440px);animation:mup .3s cubic-bezier(.2,.8,.2,1)}
+#gal .gview{overflow:hidden;border-radius:22px;background:#fde6ee;box-shadow:0 30px 80px rgba(0,0,0,.5);touch-action:pan-y}
+#gal .gtrack{display:flex;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+#gal .gtrack img{flex:0 0 100%;width:100%;max-height:calc(100vh - 150px);object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+#gal .gnav{position:absolute;top:50%;translate:0 -50%;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#111;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+#gal .gprev{left:-22px}#gal .gnext{right:-22px}
+#gal .gx{position:absolute;top:-52px;right:0;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-size:22px;cursor:pointer}
+#gal .gdots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+#gal .gdots button{width:9px;height:9px;padding:0;border:0;border-radius:9px;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s,background .3s}
+#gal .gdots button.on{width:26px;background:#fc011c}
+@media (max-width:520px){#gal .gprev{left:6px}#gal .gnext{right:6px}#gal .gnav{width:38px;height:38px;font-size:22px}}
 </style>
 <script>
 /* 새로고침하면 항상 맨 위에서 시작 */
@@ -743,7 +757,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)top();});
 <p class="lead rv">막연한 훈련보다 먼저 스스로의 위치를 정확히 파악하는 것부터 시작합니다.</p>
 <div class="g4">
 <div class="sk rv"><span class="n">01</span><h3>전문 강사진</h3><p>10년 이상의 경력을 가진 체대입시 전문 강사진들이 종목별로 직접 트레이닝합니다.</p></div>
-<div class="sk rv"><span class="n">02</span><h3>기록 및 데이터 관리</h3><p>정기적인 측정을 통해 기록 변화를 숫자로 확인하고 훈련 계획에 반영합니다.</p></div>
+<div class="sk rv clk" role="button" tabindex="0" data-gal aria-haspopup="dialog" aria-label="기록 및 데이터 관리 - FOR10 앱 화면 보기"><span class="n">02</span><h3>기록 및 데이터 관리</h3><p>정기적인 측정을 통해 기록 변화를 숫자로 확인하고 훈련 계획에 반영합니다.</p><span class="skm">앱 화면 보기 +</span></div>
 <div class="sk rv"><span class="n">03</span><h3>대학별 맞춤 전략</h3><p>성적과 실기 기록을 환산해 목표 대학과 지원 전략을 함께 설정합니다.</p></div>
 <div class="sk rv"><span class="n">04</span><h3>컨디션·멘탈 관리</h3><p>실기 고사 당일까지 부상 관리와 멘탈 코칭을 이어갑니다.</p></div>
 </div>
@@ -867,6 +881,21 @@ window.addEventListener('pageshow',function(e){if(e.persisted)top();});
 </div>
 <div class="mbody"><img id="mimg" src="" alt="" style="display:block;width:100%;height:auto"><img id="mimg2" src="" alt="" hidden><img id="mimg3" class="mx" src="" alt="" hidden></div>
 </div>
+</div>
+</div>
+
+<div id="gal" hidden>
+<div class="gbg" data-gclose></div>
+<div class="gbox" role="dialog" aria-modal="true" aria-label="FOR10 앱 화면">
+<button type="button" class="gx" aria-label="닫기" data-gclose>✕</button>
+<div class="gview"><div class="gtrack">
+<img src="img/app-1.jpg" alt="FOR10 앱 입시 컨설팅 화면 - 대학별 수능 환산 점수와 환산 총점">
+<img src="img/app-2.jpg" alt="FOR10 앱 실기 점수 계산 화면 - 기록 입력 시 배점 자동 계산">
+<img src="img/app-3.jpg" alt="FOR10 앱 모의고사 등급컷 화면 - 원점수로 표준점수·백분위·등급 확인">
+</div></div>
+<button type="button" class="gnav gprev" aria-label="이전">‹</button>
+<button type="button" class="gnav gnext" aria-label="다음">›</button>
+<div class="gdots"></div>
 </div>
 </div>
 
@@ -1095,6 +1124,24 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('calpick
 if(D.sets.length>1){var ss=$('schsets');ss.hidden=false;ss.innerHTML=D.sets.map(function(s,i){return '<button type="button" role="tab" data-i="'+i+'" aria-selected="'+(i===0)+'">'+esc(s.label)+'</button>';}).join('');
   ss.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(ss.children,function(x){x.setAttribute('aria-selected',x===b?'true':'false');});build(D.sets[+b.dataset.i]);});}
 build(D.sets[0]);
+})();
+</script>
+<script>
+(function(){
+var g=document.getElementById('gal'),tr=g.querySelector('.gtrack'),n=tr.children.length,dots=g.querySelector('.gdots'),i=0,tm=null,last=null,sx=null;
+for(var k=0;k<n;k++){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label',(k+1)+'번째 화면');(function(k){d.onclick=function(){go(k);auto();};})(k);dots.appendChild(d);}
+function go(k){i=(k+n)%n;tr.style.transform='translateX('+(-100*i)+'%)';[].forEach.call(dots.children,function(b,j){b.classList.toggle('on',j===i);});}
+function auto(){clearInterval(tm);tm=setInterval(function(){go(i+1);},3500);}
+function open(e){last=e.currentTarget;go(0);g.hidden=false;document.body.style.overflow='hidden';auto();g.querySelector('.gx').focus();}
+function close(){g.hidden=true;clearInterval(tm);document.body.style.overflow='';if(last)last.focus();}
+document.querySelectorAll('[data-gal]').forEach(function(c){c.addEventListener('click',open);c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(e);}});});
+g.querySelector('.gprev').onclick=function(){go(i-1);auto();};
+g.querySelector('.gnext').onclick=function(){go(i+1);auto();};
+g.addEventListener('click',function(e){if(e.target.closest('[data-gclose]'))close();});
+document.addEventListener('keydown',function(e){if(g.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight'){go(i+1);auto();}if(e.key==='ArrowLeft'){go(i-1);auto();}});
+var v=g.querySelector('.gview');
+v.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+v.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));auto();}});
 })();
 </script>
 </body></html>
