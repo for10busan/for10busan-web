@@ -839,7 +839,6 @@ window.addEventListener('pageshow',function(e){if(e.persisted)top();});
 <label class="fl"><span>학년 <em>*</em></span><select name="grade" required><option value="">선택</option><option>고1</option><option>고2</option><option>고3</option><option>N수</option></select></label>
 <fieldset class="fl"><legend>희망 교육원 <em>*</em></legend><div class="chips"><label><input type="radio" name="campus" value="구서교육원" checked><span>구서</span></label><label><input type="radio" name="campus" value="연산교육원"><span>연산</span></label></div></fieldset>
 </div>
-<fieldset class="fl"><legend>신청 항목</legend><div class="chips"><label><input type="checkbox" name="what" value="무료 체험 수업"><span>무료 체험 수업</span></label><label><input type="checkbox" name="what" value="실기 기록 측정"><span>실기 기록 측정</span></label></div></fieldset>
 <div class="frow">
 <label class="fl"><span>희망 날짜·시간</span><input type="text" name="when" autocomplete="off" placeholder="예) 월요일 오후 6시" maxlength="30"></label>
 <label class="fl"><span>목표 대학·학과</span><input type="text" name="goal" autocomplete="off" placeholder="예) 부산대 체교" maxlength="30"></label>
@@ -1034,8 +1033,7 @@ f.addEventListener('input',function(e){e.target.classList.remove('bad');});
 f.addEventListener('submit',function(e){e.preventDefault();});
 syncTel();
 function msg(){
-  var w=[].map.call(f.querySelectorAll('[name=what]:checked'),function(x){return x.value;}).join(', ')||'상담';
-  var L=['[FOR10 부산 무료 체험 신청]','· 이름(학교): '+f.name.value.trim(),'· 학년: '+f.grade.value,'· 희망 교육원: '+f.campus.value,'· 신청 항목: '+w];
+  var L=['[FOR10 부산 무료 체험 신청]','· 이름(학교): '+f.name.value.trim(),'· 학년: '+f.grade.value,'· 희망 교육원: '+f.campus.value];
   if(f.when.value.trim())L.push('· 희망 날짜·시간: '+f.when.value.trim());
   if(f.goal.value.trim())L.push('· 목표 대학·학과: '+f.goal.value.trim());
   return L.join('\n');
