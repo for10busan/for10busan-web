@@ -839,8 +839,8 @@ window.addEventListener('pageshow',function(e){if(e.persisted)top();});
 <fieldset class="fl"><legend>희망 교육원 <em>*</em></legend><div class="chips"><label><input type="radio" name="campus" value="구서교육원" checked><span>구서</span></label><label><input type="radio" name="campus" value="연산교육원"><span>연산</span></label></div></fieldset>
 </div>
 <div class="frow">
-<label class="fl"><span>희망 날짜·시간</span><input type="text" name="when" autocomplete="off" placeholder="예) 월요일 오후 6시" maxlength="30"></label>
 <label class="fl"><span>목표 대학·학과</span><input type="text" name="goal" autocomplete="off" placeholder="예) 부산대 체교" maxlength="30"></label>
+<label class="fl"><span>희망 날짜·시간</span><input type="text" name="when" autocomplete="off" placeholder="예) 월요일 오후 6시" maxlength="30"></label>
 </div>
 <div class="tbtns">
 <a class="tb tkk" href="#" data-kakao data-apply><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3c1e1e" d="M12 4.2c-4.9 0-8.8 3.1-8.8 6.9 0 2.4 1.6 4.6 4 5.8l-.8 3c-.1.3.3.5.5.4l3.6-2.4c.5.1 1 .1 1.5.1 4.9 0 8.8-3.1 8.8-6.9S16.9 4.2 12 4.2z"/></svg>카카오톡 신청</a>
@@ -1033,8 +1033,8 @@ f.addEventListener('submit',function(e){e.preventDefault();});
 syncTel();
 function msg(){
   var L=['[FOR10 부산 무료 체험 신청]','· 이름(학교): '+f.name.value.trim(),'· 학년: '+f.grade.value,'· 희망 교육원: '+f.campus.value];
-  if(f.when.value.trim())L.push('· 희망 날짜·시간: '+f.when.value.trim());
   if(f.goal.value.trim())L.push('· 목표 대학·학과: '+f.goal.value.trim());
+  if(f.when.value.trim())L.push('· 희망 날짜·시간: '+f.when.value.trim());
   return L.join('\n');
 }
 function copy(t){
